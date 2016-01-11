@@ -1,0 +1,8 @@
+C:\Users\thomas\Documents\Cours\ENSC\Projets\ProjetInfoSemestre11A\Projet info S1\Projet Info S1 v4\Projet Info S1 v4\bin\Debug\Projet Info S1 v4.exe
+C:\Users\thomas\Documents\Cours\ENSC\Projets\ProjetInfoSemestre11A\Projet info S1\Projet Info S1 v4\Projet Info S1 v4\bin\Debug\Projet Info S1 v4.pdb
+C:\Users\thomas\Documents\Cours\ENSC\Projets\ProjetInfoSemestre11A\Projet info S1\Projet Info S1 v4\Projet Info S1 v4\obj\x86\Debug\Projet Info S1 v4.exe
+C:\Users\thomas\Documents\Cours\ENSC\Projets\ProjetInfoSemestre11A\Projet info S1\Projet Info S1 v4\Projet Info S1 v4\obj\x86\Debug\Projet Info S1 v4.pdb
+C:\Users\eminetter.ENSC\Downloads\Projet_Info_S1_v4-2016-01-11\Projet Info S1 v4\Projet Info S1 v4\obj\x86\Debug\Projet Info S1 v4.exe
+C:\Users\eminetter.ENSC\Downloads\Projet_Info_S1_v4-2016-01-11\Projet Info S1 v4\Projet Info S1 v4\obj\x86\Debug\Projet Info S1 v4.pdb
+C:\Users\eminetter.ENSC\Downloads\Projet_Info_S1_v4-2016-01-11\Projet Info S1 v4\Projet Info S1 v4\bin\Debug\Projet Info S1 v4.exe
+C:\Users\eminetter.ENSC\Downloads\Projet_Info_S1_v4-2016-01-11\Projet Info S1 v4\Projet Info S1 v4\bin\Debug\Projet Info S1 v4.pdb
