@@ -27,14 +27,19 @@ namespace Projet_Info_S1_v4
                     compteur++;
                     i++;
                 }
-
-                if (indice != 0)
+                try
                 {
-                    lettre = caracteres[indice - 1][compteur];
-                    messageTraduit = messageTraduit + lettre;
+                    if (indice != 0)
+                    {
+                        lettre = caracteres[indice - 1][compteur];
+                        messageTraduit = messageTraduit + lettre;
+                    }
+
                 }
-
-
+                catch 
+                {
+                    Console.WriteLine("Le format de la chaîne d'entrée est incorrect" );
+                }
             }
 
             return messageTraduit;
@@ -147,15 +152,26 @@ namespace Projet_Info_S1_v4
             string phrase = "";
             do
             {
-                Console.WriteLine("Tapez votre message encodé (un mot)");
-                message = Console.ReadLine();
-                nouveauMot = traductionT9(message, dicoPlusCode);
-                phrase += " " + nouveauMot;
-                Console.WriteLine(phrase);
-                Console.WriteLine("Pour ajouter un autre mot à votre phrase, taper 1");
-                autreMot = int.Parse(Console.ReadLine());
+                try
+                {
+                    Console.WriteLine("Tapez votre message encodé ");
+                    message = Console.ReadLine();
+                    int i = int.Parse(message);
+                    nouveauMot = traductionT9(message, dicoPlusCode);
+                    phrase += " " + nouveauMot;
+                    Console.WriteLine(phrase);
+                    Console.WriteLine("Pour ajouter un autre mot à votre phrase, taper 1");
+                    autreMot = int.Parse(Console.ReadLine());
 
+                }
+                
+                catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
+
+
+        }
             while (autreMot == 1);
             
             return phrase;
