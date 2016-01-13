@@ -15,6 +15,7 @@ namespace Projet_Info_S1_v4
             int compteur = 0;
 
 
+
             for (int i = 0; i < lgMessage; i++)
             {
                 compteur = 0;
@@ -37,81 +38,127 @@ namespace Projet_Info_S1_v4
             }
 
             return messageTraduit;
-            
+
+
         }
-       
-        
+
         public static string[,] decodeMotDico(char[][] caracteres)// esssayer de charger dico une fois pour toutes dans une autree fonction
         {
-           
+
             string[] motDico = System.IO.File.ReadAllLines(@"dicoFR.txt");
             int tailleDico = motDico.Length;
 
             string[,] tabDecodeMot = new string[tailleDico, 2];
             string code = "";
             char lettre = ' ';
-            int m=0;
-            int n=0;
-           
+            int m = 0;
+            int n = 0;
+
 
             for (int i = 0; i < tailleDico; i++)
             {
                 code = "";
-                tabDecodeMot[i, 0] = motDico[i].ToLower();
-                int tailleMot = tabDecodeMot[i,0].Length ;
+                tabDecodeMot[i, 0] = motDico[i].ToLower();//ecrit en minuscule les mots
+                int tailleMot = tabDecodeMot[i, 0].Length;
 
                 for (int k = 0; k < tailleMot; k++)
                 {
-                   lettre = tabDecodeMot[i, 0][k];
-                    
-                       for ( m = 0; m < caracteres.Length; m++)//chercher a s'arreter des qu'on trouve la lettre
-                       {
-                           for ( n = 0; n < caracteres[m].Length; n++)
-                           {
-                               if (lettre == caracteres[m][n])
-                               {
-                                   code += (m + 1).ToString();// car indice décalé de 1 par rapport à ce qu'on tape au clavier
-                               }
-                               
-                           }
-                       }   
+
+                    lettre = tabDecodeMot[i, 0][k];
+
+                    for (m = 0; m < caracteres.Length; m++)//chercher a s'arreter des qu'on trouve la lettre
+                    {
+                        for (n = 0; n < caracteres[m].Length; n++)
+                        {
+                            if (lettre == caracteres[m][n])
+                            {
+
+                                code += (m + 1).ToString();// car indice décalé de 1 par rapport à ce qu'on tape au clavier
+
+                            }
+
+                        }
+                    }
+ 
                 }
-                 tabDecodeMot[i, 1] = code;
+
+                tabDecodeMot[i, 1] = code;
             }
             return tabDecodeMot;
         }
 
-        public static void  traductionT9(string messageEncode,char [][]tab)
+        public static string traductionT9(string messageEncode,string[,] tabDecodeMot)
         {
             string[] messagesPossibles = new string[10];
             string messageTraduit = "";
-            int i=0;
-          
-            string[,] tabDecodeMotBis = decodeMotDico(tab);
-            int compteurMessagePossible=0;
+            int i = 0;
+            string mot = "";
+            
+            int compteurMessagePossible = 0;
 
-            while (i < tabDecodeMotBis.Length / 2)
+            while (i < tabDecodeMot.Length / 2)
             {
-                if (messageEncode == tabDecodeMotBis[i, 1])
+                if (messageEncode == tabDecodeMot[i, 1])
                 {
-                    messageTraduit = tabDecodeMotBis[i, 0];
+                    messageTraduit = tabDecodeMot[i, 0];
                     messagesPossibles[compteurMessagePossible] = messageTraduit;
-                    compteurMessagePossible++;                    
+                    compteurMessagePossible++;
                 }
                 i++;
             }
 
             int nouvelleTaille = compteurMessagePossible;
-            for (int k = 0; k < nouvelleTaille; k++)
-            {
-                    Console.WriteLine((k+1)+ ": "+messagesPossibles[k]);
-            }
+
             if (nouvelleTaille > 1)
             {
+                for (int k = 0; k < nouvelleTaille; k++)
+                {
+
+                    Console.WriteLine((k + 1) + ": " + messagesPossibles[k]);
+                }
                 Console.WriteLine("Quel mot voulez vous ? <Taper l'indice à coté du mot souhaité>");
                 int indice = int.Parse(Console.ReadLine());
-                Console.WriteLine("\n" + messagesPossibles[indice-1]);
+                mot = messagesPossibles[indice - 1];
+            }          
+                
+            else
+            {
+                mot = messageTraduit;
             }
+
+            return mot;    
+
+        }
+
+        public static string executionMultitap(char[][] tab)
+        {
+            string message = "";
+            Console.WriteLine("Tapez votre message encodé <Pour faire un espace taper une fois 1>");
+            message = Console.ReadLine();
+            return (traductionMultimap(message, tab));
+        }
+
+        public static string executionT9(char[][]tab)
+        {
+            string message = "";
+            string[,] dicoPlusCode = decodeMotDico(tab);//on charge une fois pour toute le dico puis on l'utilise en paramètre pour traductionT9
+            string nouveauMot = "";
+            int autreMot = 1;
+            string phrase = "";
+            do
+            {
+                Console.WriteLine("Tapez votre message encodé (un mot)");
+                message = Console.ReadLine();
+                nouveauMot = traductionT9(message, dicoPlusCode);
+                phrase += " " + nouveauMot;
+                Console.WriteLine(phrase);
+                Console.WriteLine("Pour ajouter un autre mot à votre phrase, taper 1");
+                autreMot = int.Parse(Console.ReadLine());
+
+            }
+            while (autreMot == 1);
+            
+            return phrase;
 
         }
 
@@ -119,6 +166,7 @@ namespace Projet_Info_S1_v4
         {
             // int lgint=log10(entiervoulu)+1; permet de calculer la longueur d'un entier
             //(int)char.GetNumericValue(char voulu) permet d'avoir la valeur de l'entier correspondant au caractère
+
 
             Console.WriteLine(" ___________________________________");
             Console.WriteLine("|     1     |     2     |     3     |");
@@ -134,22 +182,23 @@ namespace Projet_Info_S1_v4
             Console.WriteLine("|           |chgt lettre|           |");
             Console.WriteLine("|___________|___________|___________|");
 
-  
-            char [][] tab=new char[9][];
-            tab[0]=new char[]{' ','.',',','!','?'};
-            tab[1] = new char[] { 'a', 'b', 'c' };
-            tab[2] = new char[] { 'd', 'e', 'f' };
-            tab[3] = new char[] { 'g', 'h', 'i' };
-            tab[4] = new char[] { 'j', 'k', 'l' };
-            tab[5] = new char[] { 'm', 'n', 'o' };
-            tab[6] = new char[] { 'p', 'q', 'r','s' };
-            tab[7] = new char[] { 't', 'u', 'v' };
-            tab[8] = new char[] {'w','x', 'y', 'z' };
+
+            char[][] clavier = new char[9][];
+            clavier[0] = new char[] { ' ', '.', ',', '!', '?' };
+            clavier[1] = new char[] { 'a', 'b', 'c' };
+            clavier[2] = new char[] { 'd', 'e', 'f' };
+            clavier[3] = new char[] { 'g', 'h', 'i' };
+            clavier[4] = new char[] { 'j', 'k', 'l' };
+            clavier[5] = new char[] { 'm', 'n', 'o' };
+            clavier[6] = new char[] { 'p', 'q', 'r', 's' };
+            clavier[7] = new char[] { 't', 'u', 'v' };
+            clavier[8] = new char[] { 'w', 'x', 'y', 'z' };
 
 
             string message = "";
-            string[,] dicoPlusCode = decodeMotDico(tab);
+           
 
+            //mettre tout ca dans une fonction(conseil de Clermont)
             do// mettre ton truc de try pour le choix du clavier et traduction des messagesEncode
             {
                 Console.WriteLine("Avec quel type de clavier voulez vous écrire ?<Taper 1 pour le multitap; 2 pour le T9>");
@@ -157,16 +206,17 @@ namespace Projet_Info_S1_v4
 
                 if (choixClavier == 1 | choixClavier == 2)
                 {
-                    Console.WriteLine("Tapez votre message encodé <Pour faire un espace taper une fois 1>");
-                    message = Console.ReadLine();
+                   
                     if (choixClavier == 1)
                     {
-                        Console.WriteLine(traductionMultimap(message, tab));
-                    } 
+                        message=executionMultitap(clavier);
+                        
+                    }
                     else if (choixClavier == 2)
                     {
-                        traductionT9(message, tab);
+                        message = executionT9(clavier) + ".";//Proposer choix ponctuation de fin de phrase serait cool pour T9
                     }
+                    Console.WriteLine(message);
                 }
                 else
                 {
@@ -174,8 +224,8 @@ namespace Projet_Info_S1_v4
                 }
             }
             while (message != "");
-            Console.ReadLine();  
+            Console.ReadLine();
+
         }
     }
 }
-       
