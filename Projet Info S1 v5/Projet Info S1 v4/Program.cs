@@ -82,9 +82,7 @@ namespace Projet_Info_S1_v4
                                
                            }
                        }
-                       
-                   
-
+                    
                 }
 
                 tabDecodeMot[i, 1] = code;
@@ -130,28 +128,6 @@ namespace Projet_Info_S1_v4
             }
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         static void Main(string[] args)
@@ -220,9 +196,7 @@ namespace Projet_Info_S1_v4
             }
             while (message != "");
             Console.ReadLine();
-
             
-
         }
     }
 }
