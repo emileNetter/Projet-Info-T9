@@ -14,3 +14,8 @@ C:\Users\Emile1\Downloads\Projet_info_v8-2016-01-20\Projet info v8\Projet info v
 C:\Users\Emile1\Downloads\Projet_info_v8-2016-01-20\Projet info v8\Projet info v8\obj\x86\Debug\Projet info v8.csprojResolveAssemblyReference.cache
 C:\Users\Emile1\Documents\Visual Studio 2015\Projects\Projet-Info-T9\Projet Info S1 v8\Projet info v8\obj\x86\Debug\Projet info v8.exe
 C:\Users\Emile1\Documents\Visual Studio 2015\Projects\Projet-Info-T9\Projet Info S1 v8\Projet info v8\obj\x86\Debug\Projet info v8.pdb
+C:\Users\Emile1\Documents\Visual Studio 2015\Projects\Projet-Info-T9\Projet_Info_S1_v8\Projet info v8\obj\x86\Debug\Projet info v8.exe
+C:\Users\Emile1\Documents\Visual Studio 2015\Projects\Projet-Info-T9\Projet_Info_S1_v8\Projet info v8\obj\x86\Debug\Projet info v8.pdb
+C:\Users\Emile1\Documents\Visual Studio 2015\Projects\Projet-Info-T9\Projet_Info_S1_v8\Projet info v8\bin\Debug\Projet info v8.exe
+C:\Users\Emile1\Documents\Visual Studio 2015\Projects\Projet-Info-T9\Projet_Info_S1_v8\Projet info v8\bin\Debug\Projet info v8.pdb
+C:\Users\Emile1\Documents\Visual Studio 2015\Projects\Projet-Info-T9\Projet_Info_S1_v8\Projet info v8\obj\x86\Debug\Projet info v8.csprojResolveAssemblyReference.cache
